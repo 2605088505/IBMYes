@@ -1,0 +1,43 @@
+名称：IBMCloud自动重启
+
+在：
+  推送：
+    分支机构：[主管]
+  拉请求：
+    分支机构：[主管]
+  时间表：
+    - Cron的：‘012**Fri’
+
+职位：
+  IBM-云-重新启动：
+    运行：Ubuntu-最新
+
+    步骤：
+    - 用途：action/checkout@v2
+
+    - 名称:初始化
+      运行：\x{e76f}
+        CHMOD-R 777./IBM_Cloud_CLI/
+    - 名称:登录IBMCloud
+      环境：
+        IBM_Account：${Incres.IBM_Account}}
+        区域_NUM：${EXECTURS.REGION_NUM}
+      运行：\x{e76f}
+        ./ibm_Cloud_cli/ibmCloud登录<<EOF
+        $ibm帐户
+        $Region_NUM
+        没有
+        紧急行动
+    - 名称:目标IBMCloud
+      环境：
+        资源ID：${cryps.resourse_id}
+      运行：\x{e76f}
+        ./ibm_Cloud_cli/ibmCloud-g“$目标_ID”
+        ./ibm_Cloud_cli/ibmCloud目标--cf
+        ./ibm_Cloud_cli/ibmCloud cf安装
+    - 名称:重新启动IBMCloud
+      环境：
+        ibm_app_name：${cryps.ibm_app_name}
+      运行：\x{e76f}
+        ./ibm_Cloud_cli/ibmCloud cf重新启动“$ibm_app_name”
+        
